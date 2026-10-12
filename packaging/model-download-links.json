@@ -1,0 +1,150 @@
+{
+  "sensevoice": {
+    "name": "SenseVoiceSmall INT8",
+    "folder": "sherpa-onnx-sense-voice-zh-en-ja-ko-yue-int8-2024-07-17",
+    "files": [
+      "model.int8.onnx",
+      "tokens.txt"
+    ],
+    "links": [
+      [
+        "下载 INT8 压缩包",
+        "https://github.com/k2-fsa/sherpa-onnx/releases/download/asr-models/sherpa-onnx-sense-voice-zh-en-ja-ko-yue-int8-2024-07-17.tar.bz2"
+      ]
+    ]
+  },
+  "qwen": {
+    "name": "Qwen3-ASR-1.7B",
+    "folder": "Qwen3-ASR-1.7B-hf",
+    "files": [
+      "config.json",
+      "model.safetensors",
+      "processor_config.json",
+      "tokenizer.json",
+      "tokenizer_config.json",
+      "chat_template.jinja"
+    ],
+    "links": [
+      [
+        "官方文件下载",
+        "https://huggingface.co/Qwen/Qwen3-ASR-1.7B-hf/tree/bcd2b5b7f32b480ab5790554cfa8347f246a14f3"
+      ],
+      [
+        "config.json",
+        "https://huggingface.co/Qwen/Qwen3-ASR-1.7B-hf/resolve/bcd2b5b7f32b480ab5790554cfa8347f246a14f3/config.json?download=true"
+      ],
+      [
+        "model.safetensors",
+        "https://huggingface.co/Qwen/Qwen3-ASR-1.7B-hf/resolve/bcd2b5b7f32b480ab5790554cfa8347f246a14f3/model.safetensors?download=true"
+      ],
+      [
+        "processor_config.json",
+        "https://huggingface.co/Qwen/Qwen3-ASR-1.7B-hf/resolve/bcd2b5b7f32b480ab5790554cfa8347f246a14f3/processor_config.json?download=true"
+      ],
+      [
+        "tokenizer.json",
+        "https://huggingface.co/Qwen/Qwen3-ASR-1.7B-hf/resolve/bcd2b5b7f32b480ab5790554cfa8347f246a14f3/tokenizer.json?download=true"
+      ],
+      [
+        "tokenizer_config.json",
+        "https://huggingface.co/Qwen/Qwen3-ASR-1.7B-hf/resolve/bcd2b5b7f32b480ab5790554cfa8347f246a14f3/tokenizer_config.json?download=true"
+      ],
+      [
+        "chat_template.jinja",
+        "https://huggingface.co/Qwen/Qwen3-ASR-1.7B-hf/resolve/bcd2b5b7f32b480ab5790554cfa8347f246a14f3/chat_template.jinja?download=true"
+      ]
+    ]
+  },
+  "aligner": {
+    "name": "Qwen3-ForcedAligner-0.6B",
+    "folder": "Qwen3-ForcedAligner-0.6B-hf",
+    "files": [
+      "config.json",
+      "model.safetensors",
+      "processor_config.json",
+      "tokenizer.json",
+      "tokenizer_config.json",
+      "chat_template.jinja"
+    ],
+    "links": [
+      [
+        "官方文件下载",
+        "https://huggingface.co/Qwen/Qwen3-ForcedAligner-0.6B-hf/tree/c07281df297b9905d24a508279258cccf987a064"
+      ],
+      [
+        "config.json",
+        "https://huggingface.co/Qwen/Qwen3-ForcedAligner-0.6B-hf/resolve/c07281df297b9905d24a508279258cccf987a064/config.json?download=true"
+      ],
+      [
+        "model.safetensors",
+        "https://huggingface.co/Qwen/Qwen3-ForcedAligner-0.6B-hf/resolve/c07281df297b9905d24a508279258cccf987a064/model.safetensors?download=true"
+      ],
+      [
+        "processor_config.json",
+        "https://huggingface.co/Qwen/Qwen3-ForcedAligner-0.6B-hf/resolve/c07281df297b9905d24a508279258cccf987a064/processor_config.json?download=true"
+      ],
+      [
+        "tokenizer.json",
+        "https://huggingface.co/Qwen/Qwen3-ForcedAligner-0.6B-hf/resolve/c07281df297b9905d24a508279258cccf987a064/tokenizer.json?download=true"
+      ],
+      [
+        "tokenizer_config.json",
+        "https://huggingface.co/Qwen/Qwen3-ForcedAligner-0.6B-hf/resolve/c07281df297b9905d24a508279258cccf987a064/tokenizer_config.json?download=true"
+      ],
+      [
+        "chat_template.jinja",
+        "https://huggingface.co/Qwen/Qwen3-ForcedAligner-0.6B-hf/resolve/c07281df297b9905d24a508279258cccf987a064/chat_template.jinja?download=true"
+      ]
+    ]
+  },
+  "firered": {
+    "name": "FireRedASR2-AED",
+    "folder": "FireRedASR2-AED",
+    "files": [
+      "model.pth.tar",
+      "cmvn.ark",
+      "dict.txt",
+      "train_bpe1000.model"
+    ],
+    "links": [
+      [
+        "官方文件下载",
+        "https://huggingface.co/FireRedTeam/FireRedASR2-AED/tree/2304afed56eacfee6256dee5937ed22ffa0b64ec"
+      ],
+      [
+        "model.pth.tar",
+        "https://huggingface.co/FireRedTeam/FireRedASR2-AED/resolve/2304afed56eacfee6256dee5937ed22ffa0b64ec/model.pth.tar?download=true"
+      ],
+      [
+        "cmvn.ark",
+        "https://huggingface.co/FireRedTeam/FireRedASR2-AED/resolve/2304afed56eacfee6256dee5937ed22ffa0b64ec/cmvn.ark?download=true"
+      ],
+      [
+        "dict.txt",
+        "https://huggingface.co/FireRedTeam/FireRedASR2-AED/resolve/2304afed56eacfee6256dee5937ed22ffa0b64ec/dict.txt?download=true"
+      ],
+      [
+        "train_bpe1000.model",
+        "https://huggingface.co/FireRedTeam/FireRedASR2-AED/resolve/2304afed56eacfee6256dee5937ed22ffa0b64ec/train_bpe1000.model?download=true"
+      ]
+    ]
+  },
+  "speaker": {
+    "name": "说话人分离（可选）",
+    "folder": "speaker-diarization",
+    "files": [
+      "segmentation.onnx",
+      "embedding.onnx"
+    ],
+    "links": [
+      [
+        "下载分段模型",
+        "https://github.com/k2-fsa/sherpa-onnx/releases/download/speaker-segmentation-models/sherpa-onnx-pyannote-segmentation-3-0.tar.bz2"
+      ],
+      [
+        "下载声纹模型",
+        "https://github.com/k2-fsa/sherpa-onnx/releases/download/speaker-recongition-models/3dspeaker_speech_eres2net_base_sv_zh-cn_3dspeaker_16k.onnx"
+      ]
+    ]
+  }
+}

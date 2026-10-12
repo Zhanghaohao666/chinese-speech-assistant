@@ -1,0 +1,15 @@
+transformers==5.13.1
+accelerate==1.12.0
+PySide6==6.9.2
+soundfile==0.13.1
+librosa==0.11.0
+imageio-ffmpeg==0.6.0
+python-docx==1.2.0
+reportlab==4.5.1
+sherpa-onnx==1.13.8
+kaldi-native-fbank==1.22.3
+kaldiio==2.18.0
+sentencepiece==0.2.0
+# Install matching torch/torchaudio wheels first; see 三模型接入说明.md.
+torchaudio==2.7.1
+pytest>=8,<10

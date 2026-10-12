@@ -1,0 +1,43 @@
+This prototype is distributed under GPL-3.0; see LICENSE.
+
+pyVideoTrans: https://github.com/jianchang512/pyvideotrans
+Commit: 63e42dad575bb56c78de45adbf42072cc31ec8a3
+License: GPL-3.0
+Adapted source: videotrans/process/_stt_utils.py
+Included as src/transcriber/vendor/pyvideotrans_segment.py.
+Changes: replace application-specific logging/data imports with a standalone dataclass;
+remove diagnostic print; require four CJK tokens before pause-based splitting.
+The wrapper restores punctuation/whitespace and keeps sentence
+boundaries before invoking the original segmentation logic.
+The focused PySide6 interface and job runner are newly implemented, not the full upstream UI.
+
+Qwen3-ASR / Qwen3-ForcedAligner: Alibaba Qwen Team, Apache-2.0.
+https://github.com/QwenLM/Qwen3-ASR
+Models are downloaded separately; native Hugging Face (-hf) checkpoints implement the
+same model architecture requested by the user.
+
+PySide6: LGPLv3/GPLv3/commercial. PyTorch: BSD-style. Transformers: Apache-2.0.
+python-docx 1.2.0: MIT; used for editable reading documents.
+ReportLab 4.5.1: BSD license; used for direct PDF export.
+sherpa-onnx 1.13.8: Apache-2.0, https://github.com/k2-fsa/sherpa-onnx
+Speaker segmentation ONNX: pyannote/segmentation-3.0, MIT (CNRS),
+converted/distributed by sherpa-onnx; model archive retains LICENSE.
+Speaker embeddings: 3D-Speaker ERes2Net base zh-cn, Apache-2.0 project,
+https://github.com/modelscope/3D-Speaker ; ONNX distributed by sherpa-onnx.
+Source and download URLs plus SHA256 hashes are in src/transcriber/diarization.py.
+PDF uses the installed Windows Microsoft YaHei font when available; no font file is bundled.
+FFmpeg binaries are supplied separately through imageio-ffmpeg or a user-provided path.
+Retain the exact third-party license files when producing the later Windows binary bundle.
+
+SenseVoice code: FunAudioLLM / Alibaba. Model weights follow the FunASR MODEL_LICENSE
+linked by the official model card (not the sherpa-onnx code license):
+https://github.com/modelscope/FunASR/blob/main/MODEL_LICENSE
+Official sherpa-onnx INT8 conversion:
+https://k2-fsa.github.io/sherpa/onnx/sense-voice/pretrained.html
+FireRedASR2-AED: Xiaohongshu / FireRedTeam, Apache-2.0.
+https://github.com/FireRedTeam/FireRedASR2S
+AED source subset and its LICENSE / exact commit / modification record are retained in
+src/transcriber/vendor/fireredasr2/. No FireRed LLM, VAD, LID or punctuation models are bundled.
+FireRed model weights are obtained separately from FireRedTeam/FireRedASR2-AED.
+Additional dependencies: kaldi-native-fbank 1.22.3 (Apache-2.0), kaldiio 2.18.0 (MIT),
+sentencepiece 0.2.0 (Apache-2.0), torchaudio 2.7.1 (BSD-style).

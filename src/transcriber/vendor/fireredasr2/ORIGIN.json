@@ -1,0 +1,22 @@
+{
+  "repository": "https://github.com/FireRedTeam/FireRedASR2S",
+  "commit": "4e7d9aaf4482a47cec1724807026b9b151926eb5",
+  "original_sha256": {
+    "asr.py": "f119cd2d335b7127a4e195185d4a0992c595f42f4f121084714a06afb0edbc1d",
+    "data/asr_feat.py": "de25845b3d65ceeb55a4b8813362de84d81e211101e51b85dfa8493414d4bcb9",
+    "data/token_dict.py": "832869552860f7376ed062560eec5a999928566b181ebf72367cbe5eb1f535d6",
+    "tokenizer/aed_tokenizer.py": "500b27b45c099880d0f647e397f99612b21b27b85b84f8319fb85fe655f608dc",
+    "models/fireredasr_aed.py": "ca0ef173ea786ce65095fe36d2d0bb688dc281c15e5315f0a3d7f63acf989384",
+    "models/lstm_lm.py": "cc2f24f81d39f8b080e1e360048575067a1a8f0a46c94093764634bedb3354f6",
+    "models/param.py": "fc29f659a756fc2aa4d1ef88bac64daf6393553fea7241cc9c83d426418d5810",
+    "models/module/conformer_encoder.py": "d76ea83ec25e9b24a9742a853a651f84155ef7d2b7c65c50d746391302e3e5c0",
+    "models/module/ctc.py": "7083202bb4d43d30bd62fe380830af05c89a46efe4f56ac2c664f2e2e7b43529",
+    "models/module/transformer_decoder.py": "115da6876769e0c31c2aa35b1cd182212f5ed0fd3a00d3346431461b16f24bac"
+  },
+  "changes": [
+    "AED-only package entry and imports; no LLM, VAD, LID or punctuation dependencies.",
+    "Return no timestamps when native CTC alignment fails; remove uniform-duration and artificial end-time fallback.",
+    "Define missing logger in AED null-output path.",
+    "Cast CTC forced_align log probabilities to FP32 for PyTorch/torchaudio 2.7.1 with BF16 inference."
+  ]
+}
