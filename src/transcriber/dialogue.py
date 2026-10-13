@@ -3,7 +3,7 @@ import math
 from uuid import uuid4
 
 from PySide6.QtCore import Qt, QSize, QRectF, QEvent, QPointF
-from PySide6.QtGui import QColor, QFont, QTextDocument, QTextCursor, QTextBlockFormat, QPolygonF
+from PySide6.QtGui import QColor, QFont, QTextDocument, QTextCursor, QTextBlockFormat, QPolygonF, QPen
 from PySide6.QtWidgets import (QStyledItemDelegate, QStyle, QDialog, QVBoxLayout,
     QHBoxLayout, QLabel, QLineEdit, QPlainTextEdit, QDialogButtonBox, QMenu,
     QPushButton, QMessageBox, QInputDialog)
@@ -46,11 +46,11 @@ class DialogueDelegate(QStyledItemDelegate):
         selected = bool(option.state & QStyle.StateFlag.State_Selected)
         hover = bool(option.state & QStyle.StateFlag.State_MouseOver)
         painter.setRenderHint(painter.RenderHint.Antialiasing)
-        painter.setPen(QColor(COLORS['primary'] if selected else COLORS['divider']))
+        painter.setPen(QPen(QColor(COLORS['ink'] if selected else COLORS['divider']), 2 if selected else 1))
         painter.setBrush(QColor(COLORS['selection'] if selected else COLORS['pearl'] if hover else COLORS['white']))
         painter.drawRoundedRect(rect, 8, 8)
-        if selected:
-            painter.fillRect(QRectF(rect.left()+1,rect.top()+12,3,rect.height()-24),QColor(COLORS['red']))
+        stripe = ['cyan','purple','red','yellow'][index.row()%4]
+        painter.fillRect(QRectF(rect.left()+1,rect.top()+12,4,rect.height()-24),QColor(COLORS[stripe]))
         row = index.row()
         table = self.parent()
         try:

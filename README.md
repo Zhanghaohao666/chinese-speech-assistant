@@ -12,6 +12,10 @@ Windows 本地中文会议转写桌面程序，使用 PySide6，支持三个可�
 
 按需加载，每次任务使用独立进程；Qwen 识别结束释放 ASR 后再加载对齐器。详见[三模型接入说明](三模型接入说明.md)。
 
+## Windows EXE 下载
+
+[下载 v1.2.0 不含模型便携版](https://github.com/Zhanghaohao666/chinese-speech-assistant/releases/tag/v1.2.0)。下载两个 ZIP 分卷和 `merge-package.cmd`、`merge-package.ps1` 到同一目录，双击 CMD 校验合并，然后解压运行 `wwh专属语音助手.exe`。无需安装 Python；保留整个解压目录。模型通过“模型管理”中的官方链接自行下载。
+
 ## 从源码运行
 
 1. 准备 Windows 10/11 x64 和 Python 3.12 x64。
@@ -31,7 +35,8 @@ powershell -ExecutionPolicy Bypass -File .\setup.ps1
 
 ## 功能与限制
 
-- Kinetic 深色界面；导入、播放/暂停、时间定位、搜索、历史记录与真实后台进度。
+- Maximalism 彩色界面（v1.2.0）：珊瑚红、明黄、青绿、紫色，粗描边和叠层卡片；正文保持高对比白底。使用用户提供的蓝绿麦克风图标。
+- 导入、播放/暂停、时间定位、搜索、历史记录与真实后台进度。
 - 阅读版与字幕版分别编辑；阅读段落显示一次开始时间和持续时间，保留原始时间及来源。
 - TXT / DOCX / PDF 导出阅读结构；SRT / VTT 导出字幕；JSON 保留项目数据。
 - 可选说话人分离（额外下载两份 ONNX 模型），以匿名标签区分声音，不识别真实身份；新安装默认关闭。
@@ -44,9 +49,11 @@ powershell -ExecutionPolicy Bypass -File .\setup.ps1
 
 | 引擎 | 实际设备 | 耗时 | 结果 |
 |---|---|---:|---|
-| SenseVoice | CPU INT8 | 5.23 秒（含可选说话人分析） | 成功 |
-| FireRedASR2-AED | GPU BF16 | 16.91 秒 | 成功 |
-| Qwen ASR + 对齐器 | GPU BF16 | 29.01 秒 | 成功 |
+| SenseVoice | CPU INT8 | 6.44 秒（含可选说话人分析） | 成功 |
+| FireRedASR2-AED | GPU BF16 | 23.38 秒 | 成功 |
+| Qwen ASR + 对齐器 | GPU BF16 | 33.48 秒 | 成功 |
+
+72 项回归测试和 8 个子测试通过；导入、播放、编辑、六种导出、取消与失败恢复通过。详见 [v1.2.0 发布验证](docs/v1.2.0-validation.md)。
 
 这不是识别准确率或跨电脑性能承诺。已验证含中文及空格的迁移目录、独立 Python 路径、缺少模型时的引导；尚未在另一台实体电脑实测。
 

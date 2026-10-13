@@ -4,7 +4,7 @@ using System.IO;
 using System.Windows.Forms;
 using System.Reflection;
 [assembly: AssemblyTitle("wwh专属语音助手")]
-[assembly: AssemblyVersion("1.1.0.0")]
+[assembly: AssemblyVersion("1.2.0.0")]
 class PortableLauncher {
     [STAThread]
     static int Main(string[] args) {

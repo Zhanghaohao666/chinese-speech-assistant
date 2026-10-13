@@ -10,7 +10,8 @@ from PySide6.QtWidgets import (
 from .dialogue import DialogueDelegate
 
 from .theme import STYLE, COLORS
-from .kinetic import KineticButton, KineticMark, playback_icon
+from .kinetic import KineticButton, KineticMark, MaximalCanvas, MaximalPanel, VoiceCollage, playback_icon
+from pathlib import Path
 from .asr_backends import ENGINES
 from . import APP_NAME
 from .model_catalog import CATALOG
@@ -36,7 +37,7 @@ def button(text, callback=None, name=None):
 
 
 def card():
-    frame = QFrame()
+    frame = MaximalPanel()
     frame.setObjectName('card')
     layout = QVBoxLayout(frame)
     layout.setContentsMargins(24, 24, 24, 24)
@@ -84,7 +85,7 @@ def build_ui(w):
     w.setStyleSheet(STYLE)
     w.setMinimumSize(820, 520)
     w.resize(1440, 900)
-    root = QWidget()
+    root = MaximalCanvas()
     root.setObjectName('root')
     w.setCentralWidget(root)
     shell = QHBoxLayout(root)
@@ -96,16 +97,21 @@ def build_ui(w):
     side = QVBoxLayout(w.sidebar)
     side.setContentsMargins(16, 24, 16, 24)
     side.setSpacing(8)
+    w.brand_icon = QLabel()
+    w.brand_icon.setPixmap(QPixmap(str(Path(__file__).parent/'assets/app.png')).scaled(72,72,Qt.AspectRatioMode.KeepAspectRatio,Qt.TransformationMode.SmoothTransformation))
+    w.brand_icon.setAlignment(Qt.AlignmentFlag.AlignLeft)
+    side.addWidget(w.brand_icon)
     w.brand = label(APP_NAME, 'brand')
     w.brand.setToolTip(APP_NAME)
     side.addWidget(w.brand)
-    w.brand_note = label('中文会议转写 / KINETIC', 'muted')
+    w.brand_note = label('中文会议转写 / MAXIMALISM', 'muted')
     side.addWidget(w.brand_note)
-    side.addSpacing(32)
+    side.addSpacing(24)
     w.nav_buttons = []
     for index, text in enumerate(['工作台', '历史会议', '模型管理', '设置']):
         btn = button(text, lambda checked=False, i=index: w.navigate(i), 'nav')
         btn.setIcon(nav_icon(index))
+        btn.setProperty('accent', ['yellow','pink','cyan','purple'][index])
         btn.setIconSize(QSize(20, 20))
         btn.setCheckable(True)
         btn.setToolTip(text)
@@ -139,7 +145,8 @@ def build_ui(w):
     w.meeting_title.setSizePolicy(QSizePolicy.Policy.Ignored, QSizePolicy.Policy.Preferred)
     title_line = QHBoxLayout()
     title_line.addWidget(w.meeting_title, 1)
-    title_line.addWidget(KineticMark())
+    w.title_mark = KineticMark()
+    title_line.addWidget(w.title_mark)
     main.addLayout(title_line)
     w.file_label = label('导入会议录音，让讨论成为可检索、可回放的文字。', 'muted')
     w.file_label.setSizePolicy(QSizePolicy.Policy.Ignored, QSizePolicy.Policy.Preferred)
@@ -173,6 +180,7 @@ def build_ui(w):
     actions.addWidget(w.export_button)
     main.addLayout(actions)
     engine_row = QHBoxLayout()
+    engine_row.setAlignment(Qt.AlignmentFlag.AlignLeft)
     engine_row.addWidget(label('识别引擎', 'muted'))
     w.engine = QComboBox()
     for key in ('qwen', 'sensevoice', 'firered'):
@@ -201,11 +209,11 @@ def build_ui(w):
     main.addWidget(w.log)
     content = QHBoxLayout()
     content.setSpacing(16)
-    transcript = QFrame()
+    transcript = MaximalPanel()
     w.transcript_panel = transcript
     transcript.setObjectName('transcript')
     trans = QVBoxLayout(transcript)
-    trans.setContentsMargins(16, 16, 16, 12)
+    trans.setContentsMargins(20, 18, 22, 18)
     trans.setSpacing(8)
     tools = QHBoxLayout()
     tools.addWidget(label('转写正文', 'heading'))
@@ -233,7 +241,9 @@ def build_ui(w):
     e = QVBoxLayout(empty)
     e.setContentsMargins(24, 24, 24, 24)
     e.addStretch()
-    for text, name in [('≋', 'title'), ('把录音放进来。', 'heading'), ('拖入录音文件，或复制文件后按 Ctrl+V\n让每一段讨论，都能阅读与回放。', 'muted')]:
+    w.empty_art = VoiceCollage()
+    e.addWidget(w.empty_art, 1)
+    for text, name in [('把录音放进来。', 'heading'), ('拖入录音文件，或复制文件后按 Ctrl+V\n让每一段讨论，都能阅读与回放。', 'muted')]:
         item = label(text, name, True)
         if name == 'heading':
             w.empty_title = item
@@ -296,6 +306,16 @@ def build_ui(w):
     content.addWidget(transcript, 1)
     w.notes_panel, notes = card()
     w.notes_panel.setFixedWidth(264)
+    # Scroll the secondary content instead of squeezing wrapped labels at small heights.
+    notes_scroll = QScrollArea()
+    notes_scroll.setWidgetResizable(True)
+    notes_content = QWidget()
+    notes_inner = QVBoxLayout(notes_content)
+    notes_inner.setContentsMargins(0, 0, 0, 0)
+    notes_inner.setSpacing(12)
+    notes_scroll.setWidget(notes_content)
+    notes.addWidget(notes_scroll)
+    notes = notes_inner
     title_row = QHBoxLayout()
     title_row.addWidget(label('会议纪要', 'heading'))
     title_row.addStretch()

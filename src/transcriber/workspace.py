@@ -53,6 +53,7 @@ class WorkspaceBehavior:
         self.brand.setText('wwh' if compact else APP_NAME)
         self.brand.setStyleSheet('font-size: 16px;' if compact else 'font-size: 19px;')
         self.brand_note.setVisible(not compact)
+        self.brand_icon.setVisible(not compact and self.height() >= 700)
         self.local_note.setVisible(not compact)
         labels = ['工作台', '历史会议', '模型管理', '设置']
         for btn, title in zip(self.nav_buttons, labels):
@@ -64,11 +65,19 @@ class WorkspaceBehavior:
         self.notes_toggle.setToolTip('窗口宽度不足，已自动收起纪要面板' if not allowed else '显示或收起纪要面板')
         self.notes_toggle.setText('收起纪要' if allowed and self.notes_requested else '纪要面板')
         short = self.height() < 740
+        self.empty_art.setVisible(not short)
+        self.title_mark.setVisible(not short)
+        self.meeting_title.setStyleSheet('font-size: 26px;' if short else '')
+        self.engine_note.setVisible(not short)
+        self.engine.setToolTip(self.engine_note.text())
+        self.edit_note.setVisible(not short)
+        self.transcript_panel.layout().setContentsMargins(18, 10 if short else 18, 20, 10 if short else 18)
+        self.player_panel.layout().setContentsMargins(12, 8 if short else 12, 12, 8 if short else 12)
         self.file_label.setVisible(not short)
         self.eyebrow.setVisible(not short)
-        self.workspace_layout.setSpacing(8 if short else 16)
-        self.body_layout.setContentsMargins(16 if compact else 24, 16 if short else 24,
-                                           16 if compact else 24, 16 if short else 24)
+        self.workspace_layout.setSpacing(4 if short else 16)
+        self.body_layout.setContentsMargins(16 if compact else 24, 12 if short else 24,
+                                           16 if compact else 24, 12 if short else 24)
         self.resize_rows()
 
     def resizeEvent(self, event):

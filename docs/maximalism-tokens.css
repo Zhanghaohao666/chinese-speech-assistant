@@ -1,0 +1,13 @@
+/* Maximalism: design-style maximal */
+:root {
+  --color-primary: #4ECDC4; --color-secondary: #A78BFA;
+  --color-accent: #FFE66D; --color-coral: #FF6B6B;
+  --color-background: #FFF9EC; --color-surface: #FFFFFF;
+  --color-text: #20202A; --color-text-secondary: #5A5468;
+  --color-link: #006B65; --radius-sm: 6px; --radius-md: 9px; --radius-lg: 12px;
+  --font-heading: 'Space Grotesk', 'Noto Sans SC', 'Microsoft YaHei UI', sans-serif;
+  --font-body: 'Noto Sans SC', 'Microsoft YaHei UI', sans-serif;
+  --shadow: 6px 6px 0 #FF6B6B, -4px -4px 0 #4ECDC4;
+}
+.maximal-card { background:var(--color-surface); border:2px solid var(--color-text);border-radius:var(--radius-lg);box-shadow:var(--shadow);padding:24px; }
+.maximal-button { background:var(--color-primary);color:var(--color-text);border:2px solid var(--color-text);border-bottom-width:4px;border-radius:var(--radius-md);padding:10px 16px;font-weight:700; }
